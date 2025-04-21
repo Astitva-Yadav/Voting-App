@@ -1,39 +1,68 @@
 @import "tailwindcss";
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
     --bg-green: #4ade80;
     --bg-red: #ef4444;
     --bg-blue: #3b82f6;
+    --transition-speed: 0.3s;
+    --hover-lift: -6px;
+    --shadow-color: rgba(0, 0, 0, 0.15);
 }
 
+
 body {
-    background: #eeeff3;
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+    background-image: 
+        linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%),
+        repeating-linear-gradient(45deg, 
+            rgba(255, 255, 255, 0.1) 0px,
+            rgba(255, 255, 255, 0.1) 2px,
+            transparent 2px,
+            transparent 8px
+        );
+    min-height: 100vh;
+    padding: 2rem 0;
+    background-attachment: fixed;
 }
 
 .votes:nth-child(1) {
     --main-color: var(--bg-blue);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease;
 }
 
 .votes:nth-child(2) {
     --main-color: var(--bg-red);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease;
 }
 
 .votes:nth-child(3) {
     --main-color: var(--bg-green);
+    transform: translateY(0);
+    transition: transform var(--transition-speed) ease;
+}
+
+.votes:hover {
+    transform: translateY(-4px);
 }
 
 input:checked + label {
     border-color: var(--main-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all var(--transition-speed) ease;
 }
 
 progress::-webkit-progress-bar {
     background: #cbd5e1;
     border-radius: 0.5rem;
+    overflow: hidden;
 }
 
 progress::-webkit-progress-value {
     background: var(--main-color);
+    transition: width var(--transition-speed) ease-out;
 }

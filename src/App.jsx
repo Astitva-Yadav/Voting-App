@@ -18,9 +18,9 @@ function App() {
                         "databases.*.collections.*.documents.*.update"
                     )
                 ) {
-                    setQuestions((prevQuestions) => {
-                        return prevQuestions.map((question) => {
-                            if (question.$id !== res.payload.$id) {
+                    setQuestions((prevQuestions)=>{
+                        return prevQuestions.map((question)=>{
+                            if(question.$id!==res.payload.$id){
                                 return question;
                             }
 
